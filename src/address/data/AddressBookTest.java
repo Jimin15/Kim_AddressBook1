@@ -103,7 +103,7 @@ public class AddressBookTest {
     public void testRemoveMultipleEntriesFound() {
         AddressBook addressBook = new AddressBook();
         AddressEntry entry1 = new AddressEntry("John", "Doe", "123 Main St", "Anytown", "CA", 12345, "555-1234", "john@example.com");
-        AddressEntry entry2 = new AddressEntry("Jane", "Doe", "456 Elm St", "Othertown", "NY", 54321, "555-5678", "jane@example.com");
+        AddressEntry entry2 = new AddressEntry("Jane", "Doer", "456 Elm St", "Othertown", "NY", 54321, "555-5678", "jane@example.com");
         addressBook.add(entry1);
         addressBook.add(entry2);
 
@@ -112,24 +112,20 @@ public class AddressBookTest {
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
 
-        addressBook.remove("Doe");
+        addressBook.remove("Do");
 
         assertTrue(outContent.toString().contains("Entry removed successfully."));
         assertEquals(1, addressBook.addressEntryList.size());
     }
 
-    @org.junit.jupiter.api.Test
     @Test
     public void testAdd() {
         AddressBook addressBook = new AddressBook();
         AddressEntry entry1 = new AddressEntry("John", "C", "123 Main St", "Anytown", "CA", 12345, "555-1234", "john@example.com");
-        AddressEntry entry2 = new AddressEntry("Jane", "A", "456 Elm St", "Othertown", "NY", 54321, "555-5678", "jane@example.com");
-        AddressEntry entry3 = new AddressEntry("Jimin", "B", "456 Elm St", "Othertown", "NY", 52321, "555-5238", "jimin@example.com");
+
         addressBook.add(entry1);
-        addressBook.add(entry2);
-        addressBook.add(entry3);
-        final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outContent));
+        assertEquals(1, addressBook.addressEntryList.size());
+
     }
 
     @org.junit.jupiter.api.Test
