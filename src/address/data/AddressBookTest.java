@@ -9,6 +9,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class AddressBookTest {
@@ -132,7 +133,50 @@ public class AddressBookTest {
     void readFromFile() {
     }
 
-    @org.junit.jupiter.api.Test
-    void find() {
+    @Test
+    public void testFind() {
+        // Arrange
+        AddressBook addressBook = new AddressBook();
+        AddressEntry entry1 = new AddressEntry("John", "C", "123 Main St", "Anytown", "CA", 12345, "555-1234", "john@example.com");
+        AddressEntry entry2 = new AddressEntry("Jane", "A", "456 Elm St", "Othertown", "NY", 54321, "555-5678", "jane@example.com");
+        AddressEntry entry3 = new AddressEntry("Jimin", "Boa", "456 Elm St", "Othertown", "NY", 52321, "555-5238", "jimin@example.com");
+        AddressEntry entry4 = new AddressEntry("Min", "Boo", "456 Elm St", "ktown", "NY", 12321, "555-1238", "kim@example.com");
+        addressBook.add(entry1);
+        addressBook.add(entry2);
+        addressBook.add(entry3);
+        addressBook.add(entry4);
+
+        // Redirect System.out to capture printed output
+        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+
+        // Act
+        addressBook.find("Bo");
+
+        // Assert
+        String expectedOutput = "The following 2 entries were found in the address book for a last name starting with \"Bo\":\n" +
+                "\n" +
+                "1:\n" +
+                "First Name: Jimin\n" +
+                "Last Name: Boa\n" +
+                "Street: 456 Elm St\n" +
+                "City: Othertown\n" +
+                "State: NY\n" +
+                "Zip Code: 52321\n" +
+                "Phone: 555-5238\n" +
+                "Email: jimin@example.com\n" +
+                "\n" +
+                "2:\n" +
+                "First Name: Min\n" +
+                "Last Name: Boo\n" +
+                "Street: 456 Elm St\n" +
+                "City: ktown\n" +
+                "State: NY\n" +
+                "Zip Code: 12321\n" +
+                "Phone: 555-1238\n" +
+                "Email: kim@example.com\n"+
+                "\n";
+
+        assertLinesMatch(expectedOutput.lines(), outContent.toString().lines());
     }
 }

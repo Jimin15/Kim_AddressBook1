@@ -37,7 +37,7 @@ public class AddressBook {
         int found = 0;
         List<AddressEntry> foundEntries = new ArrayList<>();
         for (AddressEntry entry : addressEntryList) {
-            if (entry.getLastName().equalsIgnoreCase(lastName)) {
+            if (entry.getLastName().toLowerCase().startsWith(lastName.toLowerCase())) {
                 found += 1;
                 foundEntries.add(entry);
             }
@@ -129,7 +129,7 @@ public class AddressBook {
     public void find(String startOfLastName){
         List<AddressEntry> foundEntries = new ArrayList<>();
         for (AddressEntry entry : addressEntryList) {
-            if (entry.getLastName().startsWith(startOfLastName)) {
+            if (entry.getLastName().toLowerCase().startsWith(startOfLastName.toLowerCase())) {
                 foundEntries.add(entry);
             }
         }
@@ -140,10 +140,11 @@ public class AddressBook {
             System.out.println("The following " + foundEntries.size() + " entries were found in the address book for a last name starting with \"" + startOfLastName + "\":\n");
             int index = 1;
             for (AddressEntry entry : foundEntries) {
-                System.out.println(index + ": " + entry);
+                System.out.println(index + ":");
+                System.out.println(entry);
+                System.out.println();
                 index++;
             }
         }
-
     }
 }
