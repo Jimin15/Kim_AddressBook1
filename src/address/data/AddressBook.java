@@ -98,8 +98,18 @@ public class AddressBook {
 
     }
 
-    public void add(AddressEntry Entry) {
-        addressEntryList.add(Entry);
+    public void add(AddressEntry entry) {
+        boolean isDuplicate = addressEntryList.stream().anyMatch(e ->
+                e.getFirstName().equalsIgnoreCase(entry.getFirstName()) &&
+                        e.getLastName().equalsIgnoreCase(entry.getLastName()) &&
+                        e.getPhone().equalsIgnoreCase(entry.getPhone()) &&
+                        e.getEmail().equalsIgnoreCase(entry.getEmail()));
+
+        if (isDuplicate) {
+            return;
+        } else {
+            addressEntryList.add(entry);
+        }
     }
 
     public void readFromFile(String filename) throws IOException {
