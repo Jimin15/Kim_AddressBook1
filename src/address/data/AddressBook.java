@@ -26,9 +26,8 @@ public class AddressBook {
 
         // Print each address entry
         for (int i = 0; i < addressEntryList.size(); i++) {
-            System.out.println((i + 1) + ":");
+            addressEntryList.get(i).index = i+1;
             System.out.println(addressEntryList.get(i).toString());
-            //System.out.println();
         }
     }
 
@@ -50,11 +49,11 @@ public class AddressBook {
 
         if (found > 1) {
             System.out.println("The following entries were found in the address book, select number of entry you wish to remove:\n");
-            int index = 1;
+            int i = 1;
             for (AddressEntry entry : foundEntries) {
-                System.out.println(index + ":");
+                entry.index = i;
                 System.out.println(entry);
-                index++;
+                i++;
             }
 
             Scanner scanner = new Scanner(System.in);
@@ -116,22 +115,30 @@ public class AddressBook {
         BufferedReader br = new BufferedReader(new FileReader(filename));
         String line;
         while ((line = br.readLine()) != null) {
-            String[] parts = line.split(", ");
-            if (parts.length == 8) {
-                String firstName = parts[0];
-                String lastName = parts[1];
-                String street = parts[2];
-                String city = parts[3];
-                String state = parts[4];
-                int zip = Integer.parseInt(parts[5]);
-                String phone = parts[6];
-                String email = parts[7];
+            //Each line is read to extract information
+            String firstlastName = line;
+            String street = br.readLine();
+            String cityStateZip = br.readLine();
+            String email = br.readLine();
+            String phone = br.readLine();
+            br.readLine();
 
-                AddressEntry entry = new AddressEntry(firstName, lastName, street, city, state, zip, phone, email);
-                add(entry);
-            } else {
-                System.out.println("Invalid entry format: " + line);
-            }
+            // To separate firstName, lastName, we split and extract the necessary information
+            String[] firstlastNameParts = firstlastName.split(" ");
+            String firstName = firstlastNameParts[0];
+            String lastName = firstlastNameParts[1];
+
+            // To separate city, state, and zip code, we split and extract the necessary information
+            String[] cityStateZipParts = cityStateZip.split(", ");
+            String city = cityStateZipParts[0];
+            String stateZip = cityStateZipParts[1];
+            String[] stateZipParts = stateZip.split(" ");
+            String state = stateZipParts[0];
+            int zip = Integer.parseInt(stateZipParts[1]);
+
+            // Create an AddressEntry object and add it to the list
+            AddressEntry entry = new AddressEntry(firstName, lastName, street, city, state, zip, phone, email);
+            add(entry);
         }
         br.close();
     }
@@ -148,12 +155,12 @@ public class AddressBook {
             System.out.println("No entries found for a last name starting with \"" + startOfLastName + "\"");
         } else {
             System.out.println("The following " + foundEntries.size() + " entries were found in the address book for a last name starting with \"" + startOfLastName + "\":\n");
-            int index = 1;
+            int i = 1;
             for (AddressEntry entry : foundEntries) {
-                System.out.println(index + ":");
+                entry.index = i;
                 System.out.println(entry);
                 System.out.println();
-                index++;
+                i++;
             }
         }
     }

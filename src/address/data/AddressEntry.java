@@ -2,14 +2,17 @@ package address.data;
 
 public class AddressEntry {
 
-    String firstName;
-    String lastName;
-    String street;
-    String city;
-    String state;
-    Integer zip;
-    String phone;
-    String email;
+    private String firstName;
+    private String lastName;
+    private String street;
+    private String city;
+    private String state;
+    private Integer zip;
+    private String phone;
+    private String email;
+
+    public int index = 0;
+
     public AddressEntry(){
 
     }
@@ -25,14 +28,11 @@ public class AddressEntry {
     }
 
     public String toString() {
-        return "First Name: " + firstName + "\n" +
-                "Last Name: " + lastName + "\n" +
-                "Street: " + street + "\n" +
-                "City: " + city + "\n" +
-                "State: " + state + "\n" +
-                "Zip Code: " + zip + "\n" +
-                "Phone: " + phone + "\n" +
-                "Email: " + email;
+        return index + ": " +firstName + " " + lastName + "\n" +
+                street + "\n" +
+                city + ", " + state + " " + zip + "\n" +
+                phone + "\n" +
+                email;
     }
 
     public String getStreet() {
