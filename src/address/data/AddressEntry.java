@@ -16,6 +16,7 @@ public class AddressEntry {
     public AddressEntry(){
 
     }
+
     public AddressEntry(String firstName, String lastName, String street, String city, String state, Integer zip, String email, String phone){
         setFirstName(firstName);
         setLastName(lastName);

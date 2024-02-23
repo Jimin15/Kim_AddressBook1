@@ -63,6 +63,7 @@ public class AddressBook {
                 System.out.print("\nEnter the number of entry you wish to remove: ");
                 if (scanner.hasNextInt()) {
                     choice = scanner.nextInt();
+                    scanner.nextLine();
                     if (choice >= 1 && choice <= foundEntries.size()) {
                         break; // Exit loop if choice is valid
                     } else {
@@ -73,12 +74,19 @@ public class AddressBook {
                     scanner.next(); // Consume invalid input
                 }
             }
-            scanner.close();
+
 
             AddressEntry entryToRemove = foundEntries.get(choice - 1); // Get entry to remove
-            addressEntryList.remove(entryToRemove);
 
-            System.out.println("Entry removed successfully.");
+            System.out.println("Hit 'y' to remove the entry or 'n' to return to main menu");
+            String cho = scanner.nextLine().trim();
+            if (cho.equalsIgnoreCase("y")) {
+                addressEntryList.remove(entryToRemove);
+                System.out.println("Entry removed successfully.");
+            } else {
+                System.out.println("Removal cancelled.");
+            }
+
         } else {
             AddressEntry entryToRemove = foundEntries.get(0); // Get the only entry found
             System.out.println("The following entry was found in the address book:");
