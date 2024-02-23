@@ -115,7 +115,7 @@ class MenuTest {
 
     @Test
     void prompt_Phone() {
-        String input = "323-234-5623\n"; // 사용자 입력 시뮬레이션
+        String input = "323-234-5623\n"; // Simulating user input
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
 
@@ -126,11 +126,11 @@ class MenuTest {
 
     @Test
     void prompt_Email() {
-        String input = "fun@gmail.com\n"; // 사용자 입력 시뮬레이션
+        String input = "fun@gmail.com\n"; // Simulating user input
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
 
-        String email = Menu.prompt_Email(); // 메서드 호출 및 반환값 저장
+        String email = Menu.prompt_Email(); // Method invocation and storing the return value
         // Assert
         assertEquals("fun@gmail.com", email);
     }

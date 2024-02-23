@@ -16,23 +16,23 @@ public class AddressEntry {
     public AddressEntry(){
 
     }
-    public AddressEntry(String firstName, String lastName, String street, String city, String state, Integer zip, String phone, String email){
+    public AddressEntry(String firstName, String lastName, String street, String city, String state, Integer zip, String email, String phone){
         setFirstName(firstName);
         setLastName(lastName);
         setStreet(street);
         setCity(city);
         setState(state);
         setZip(zip);
-        setPhone(phone);
         setEmail(email);
+        setPhone(phone);
     }
 
     public String toString() {
         return index + ": " +firstName + " " + lastName + "\n" +
                 street + "\n" +
                 city + ", " + state + " " + zip + "\n" +
-                phone + "\n" +
-                email;
+                email + "\n" +
+                phone;
     }
 
     public String getStreet() {

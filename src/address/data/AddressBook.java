@@ -28,6 +28,7 @@ public class AddressBook {
         for (int i = 0; i < addressEntryList.size(); i++) {
             addressEntryList.get(i).index = i+1;
             System.out.println(addressEntryList.get(i).toString());
+            System.out.println();
         }
     }
 
@@ -92,7 +93,6 @@ public class AddressBook {
             } else {
                 System.out.println("Removal cancelled.");
             }
-            scanner.close();
         }
 
     }
