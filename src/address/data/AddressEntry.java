@@ -2,6 +2,8 @@ package address.data;
 
 /**
  * A class representing an entry in the address book.
+ *  @author [Jimin Kim]
+ *  @since [2024-02-16]
  */
 public class AddressEntry {
     /** The first name of the individual */

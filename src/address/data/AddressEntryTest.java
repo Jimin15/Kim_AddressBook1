@@ -13,6 +13,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * The AddressEntryTest class contains unit tests for the AddressEntry class.
+ *  @author [Jimin Kim]
+ *  @since [2024-02-16]
  */
 class AddressEntryTest {
 

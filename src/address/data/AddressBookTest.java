@@ -28,6 +28,8 @@ public class AddressBookTest {
 
     /**
      * Tests the case when the address book is empty.
+     *  @author [Jimin Kim]
+     *  @since [2024-02-16]
      */
     @Test
     public void testListNonEmptyAddressBook() {

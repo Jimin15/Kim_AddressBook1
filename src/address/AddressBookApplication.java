@@ -9,6 +9,8 @@ import java.util.Scanner;
 /**
  * The AddressBookApplication class represents an application for managing address book entries.
  * It provides a command-line interface for users to interact with the address book functionalities.
+ *  @author [Jimin Kim]
+ *  @since [2024-02-16]
  */
 public class AddressBookApplication {
 
