@@ -7,6 +7,8 @@ import java.util.Collections;
 
 /**
  * The AddressBook class represents an address book, providing functionality to add, remove, list, read from file, and find address entries.
+ * @author [Jimin Kim]
+ * @since [2024-02-16]
  */
 
 public class AddressBook {
