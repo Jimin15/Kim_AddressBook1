@@ -8,7 +8,6 @@ import java.io.*;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.util.Optional;
 
 
 public class AddressBookTest {
@@ -198,6 +197,60 @@ public class AddressBookTest {
         assertEquals("319-293-3838", entry2.getPhone());
     }
 
+    @Test
+    public void testReadFromFile1() {
+        // Arrange
+        String testFilename = "testFile1.txt";
+        createTestFile1(testFilename);
+        AddressBook addressBook = new AddressBook();
+
+        // Act
+        try {
+            addressBook.readFromFile(testFilename);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // Assert
+        assertEquals(3, addressBook.addressEntryList.size());
+
+        AddressEntry entry1 = addressBook.addressEntryList.get(0);
+        assertEquals("Lynne", entry1.getFirstName());
+        assertEquals("Grewe", entry1.getLastName());
+        assertEquals("123 3rd avenue", entry1.getStreet());
+        assertEquals("hayward", entry1.getCity());
+        assertEquals("ca", entry1.getState());
+        int zip = entry1.getZip();
+        String zipString = String.valueOf(zip);
+        assertEquals( "99999", zipString);
+        assertEquals("l@gmail.com", entry1.getEmail());
+        assertEquals("222233233", entry1.getPhone());
+
+        AddressEntry entry2 = addressBook.addressEntryList.get(1);
+        assertEquals("Peanut", entry2.getFirstName());
+        assertEquals("Grow", entry2.getLastName());
+        assertEquals("389 market ave", entry2.getStreet());
+        assertEquals("Los Angeles", entry2.getCity());
+        assertEquals("CA", entry2.getState());
+        int zip2 = entry2.getZip();
+        String zipString2 = String.valueOf(zip2);
+        assertEquals("393939", zipString2);
+        assertEquals("market@yahoo.com", entry2.getEmail());
+        assertEquals("319-293-3838", entry2.getPhone());
+
+        AddressEntry entry3 = addressBook.addressEntryList.get(2);
+        assertEquals("Jepsom", entry3.getFirstName());
+        assertEquals("Nelson", entry3.getLastName());
+        assertEquals("1111 Address St.", entry3.getStreet());
+        assertEquals("Oakland", entry3.getCity());
+        assertEquals("CA", entry3.getState());
+        int zip3 = entry3.getZip();
+        String zipString3 = String.valueOf(zip3);
+        assertEquals("12345", zipString3);
+        assertEquals("sij@gmail.com", entry3.getEmail());
+        assertEquals("111-234-5678", entry3.getPhone());
+    }
+
     private void createTestFile(String filename) {
         try {
             File file = new File(filename);
@@ -215,6 +268,38 @@ public class AddressBookTest {
             writer.write("Los Angeles, CA 393939\n");
             writer.write("market@yahoo.com\n");
             writer.write("319-293-3838\n");
+
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void createTestFile1(String filename) {
+        try {
+            File file = new File(filename);
+            FileWriter writer = new FileWriter(file);
+            writer.write("Lynne Grewe\n");
+            writer.write("123 3rd avenue\n");
+            writer.write("hayward, ca 99999\n");
+            writer.write("l@gmail.com\n");
+            writer.write("222233233\n");
+
+            writer.write("\n");
+
+            writer.write("Peanut Grow\n");
+            writer.write("389 market ave\n");
+            writer.write("Los Angeles, CA 393939\n");
+            writer.write("market@yahoo.com\n");
+            writer.write("319-293-3838\n");
+
+            writer.write("\n");
+
+            writer.write("Jepsom Nelson\n");
+            writer.write("1111 Address St.\n");
+            writer.write("Oakland, CA 12345\n");
+            writer.write("sij@gmail.com\n");
+            writer.write("111-234-5678\n");
 
             writer.close();
         } catch (IOException e) {
