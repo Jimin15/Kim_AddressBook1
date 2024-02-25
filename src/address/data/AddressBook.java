@@ -2,18 +2,28 @@ package address.data;
 import java.io.*;
 import java.util.List;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.Scanner;
 import java.util.Collections;
 
+/**
+ * The AddressBook class represents an address book, providing functionality to add, remove, list, read from file, and find address entries.
+ */
+
 public class AddressBook {
 
+    /** List of address entries */
     List<AddressEntry> addressEntryList;
 
+    /**
+     * Constructor for AddressBook class. Creates a new address book.
+     */
     public AddressBook() {
         addressEntryList = new ArrayList<>();
     }
 
+    /**
+     * Lists all entries in the address book. If the address book is empty, "Address book is empty." is printed.
+     */
     public void list() {
         // Check if address book is empty
         if (addressEntryList.isEmpty()) {
@@ -32,6 +42,10 @@ public class AddressBook {
         }
     }
 
+    /**
+     * Removes an address entry with the given last name.
+     * @param lastName Last name of the address entry to be removed
+     */
     public void remove(String lastName) {
 
         int found = 0;
@@ -89,6 +103,7 @@ public class AddressBook {
 
         } else {
             AddressEntry entryToRemove = foundEntries.get(0); // Get the only entry found
+            entryToRemove.index = 1;
             System.out.println("The following entry was found in the address book:");
             System.out.println(entryToRemove);
 
@@ -105,6 +120,12 @@ public class AddressBook {
 
     }
 
+
+    /**
+     * Adds a new address entry to the address book. Duplicate entries are not added.
+     * @param entry Address entry to be added
+     */
+
     public void add(AddressEntry entry) {
         boolean isDuplicate = addressEntryList.stream().anyMatch(e ->
                 e.getFirstName().equalsIgnoreCase(entry.getFirstName()) &&
@@ -119,6 +140,11 @@ public class AddressBook {
         }
     }
 
+    /**
+     * Reads address entries from a file and adds them to the address book.
+     * @param filename Path and name of the file to read from
+     * @throws IOException If an error occurs while reading the file
+     */
     public void readFromFile(String filename) throws IOException {
         BufferedReader br = new BufferedReader(new FileReader(filename));
         String line;
@@ -145,12 +171,17 @@ public class AddressBook {
             int zip = Integer.parseInt(stateZipParts[1]);
 
             // Create an AddressEntry object and add it to the list
-            AddressEntry entry = new AddressEntry(firstName, lastName, street, city, state, zip, phone, email);
+            AddressEntry entry = new AddressEntry(firstName, lastName, street, city, state, zip, email,phone);
             add(entry);
         }
         br.close();
     }
 
+
+    /**
+     * Finds and prints address entries with last names starting with the given string.
+     * @param startOfLastName Starting substring of the last name to find
+     */
     public void find(String startOfLastName){
         List<AddressEntry> foundEntries = new ArrayList<>();
         for (AddressEntry entry : addressEntryList) {

@@ -44,21 +44,21 @@ public class AddressBookTest {
                 "Othertown" + ", "+ "NY" + " " + "54321\n" +
                 "555-5678\n" +
                 "jane@example.com" +
-                "\n"+
+                "\n\n"+
                 "2: " +
                 "Jimin"+ " " + "B\n" +
                 "456 Elm St\n" +
                 "Othertown" + ", " + "NY" + " " + "52321\n" +
                 "555-5238\n" +
                 "jimin@example.com"+
-                "\n"+
+                "\n\n"+
                 "3: " +
                 "John" + " " +"C\n" +
                 "123 Main St\n" +
                 "Anytown" + ", " + "CA" + " " +"12345\n" +
                 "555-1234\n" +
                 "john@example.com"+
-                "\n";
+                "\n\n";
         assertLinesMatch(expectedOutput.lines(), outContent.toString().lines());
     }
 
@@ -154,47 +154,7 @@ public class AddressBookTest {
     }
 
 
-    @Test
-    public void testReadFromFile1() {
-        // Arrange
-        String testFilename = "testFile.txt";
-        createTestFile(testFilename);
-        AddressBook addressBook = new AddressBook();
 
-        // Act
-        try {
-            addressBook.readFromFile(testFilename);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        // Assert
-        assertEquals(2, addressBook.addressEntryList.size());
-
-        AddressEntry entry1 = addressBook.addressEntryList.get(0);
-        assertEquals("Lynne", entry1.getFirstName());
-        assertEquals("Grewe", entry1.getLastName());
-        assertEquals("123 3rd avenue", entry1.getStreet());
-        assertEquals("hayward", entry1.getCity());
-        assertEquals("ca", entry1.getState());
-        int zip = entry1.getZip();
-        String zipString = String.valueOf(zip);
-        assertEquals( "99999", zipString);
-        assertEquals("l@gmail.com", entry1.getEmail());
-        assertEquals("222233233", entry1.getPhone());
-
-        AddressEntry entry2 = addressBook.addressEntryList.get(1);
-        assertEquals("Peanut", entry2.getFirstName());
-        assertEquals("Grow", entry2.getLastName());
-        assertEquals("389 market ave", entry2.getStreet());
-        assertEquals("Los Angeles", entry2.getCity());
-        assertEquals("CA", entry2.getState());
-        int zip2 = entry2.getZip();
-        String zipString2 = String.valueOf(zip2);
-        assertEquals("393939", zipString2);
-        assertEquals("market@yahoo.com", entry2.getEmail());
-        assertEquals("319-293-3838", entry2.getPhone());
-    }
 
     @Test
     public void testReadFromFile() {

@@ -24,8 +24,9 @@ public class AddressEntry {
         setCity(city);
         setState(state);
         setZip(zip);
-        setEmail(email);
         setPhone(phone);
+        setEmail(email);
+
     }
 
     public String toString() {
