@@ -187,14 +187,17 @@ public class AddressBook {
     public void find(String startOfLastName){
         List<AddressEntry> foundEntries = new ArrayList<>();
         for (AddressEntry entry : addressEntryList) {
+            // Check if the last name of the current entry starts with the specified string
             if (entry.getLastName().toLowerCase().startsWith(startOfLastName.toLowerCase())) {
                 foundEntries.add(entry);
             }
         }
 
+        // If no entries were found, print a message indicating so
         if (foundEntries.isEmpty()) {
             System.out.println("No entries found for a last name starting with \"" + startOfLastName + "\"");
         } else {
+            // If entries were found, print each entry along with its index
             System.out.println("The following " + foundEntries.size() + " entries were found in the address book for a last name starting with \"" + startOfLastName + "\":\n");
             int i = 1;
             for (AddressEntry entry : foundEntries) {
