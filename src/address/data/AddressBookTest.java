@@ -9,7 +9,9 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
-
+/**
+ * The AddressBookTest class defines unit tests for the AddressBook class.
+ */
 public class AddressBookTest {
     @Test
     public void testListEmptyAddressBook() {
@@ -23,6 +25,10 @@ public class AddressBookTest {
     }
 
     //test1
+
+    /**
+     * Tests the case when the address book is empty.
+     */
     @Test
     public void testListNonEmptyAddressBook() {
         AddressBook addressBook = new AddressBook();
@@ -61,6 +67,9 @@ public class AddressBookTest {
         assertLinesMatch(expectedOutput.lines(), outContent.toString().lines());
     }
 
+    /**
+     * Tests the case when the address book contains entries.
+     */
     @Test
     public void testRemoveNoEntryFound() {
         AddressBook addressBook = new AddressBook();
@@ -72,6 +81,9 @@ public class AddressBookTest {
         assertTrue(outContent.toString().contains("No address entry found for Doe"));
     }
 
+    /**
+     * Tests the case when no entry is found for the given last name.
+     */
     @Test
     public void testRemoveSingleEntryFound() {
         AddressBook addressBook = new AddressBook();
@@ -89,6 +101,9 @@ public class AddressBookTest {
         assertTrue(addressBook.addressEntryList.isEmpty());
     }
 
+    /**
+     * Tests the case when multiple entries are found and one is selected and removed.
+     */
     @Test
     public void testRemoveMultipleEntriesFound() {
         AddressBook addressBook = new AddressBook();
@@ -108,6 +123,9 @@ public class AddressBookTest {
         assertEquals(1, addressBook.addressEntryList.size());
     }
 
+    /**
+     * Tests adding an entry to the address book.
+     */
     @Test
     public void testAdd1() {
         AddressBook addressBook = new AddressBook();
@@ -118,6 +136,9 @@ public class AddressBookTest {
 
     }
 
+    /**
+     * Tests adding multiple entries to the address book.
+     */
     @Test
     public void testAdd2() {
         AddressBook addressBook = new AddressBook();
@@ -128,6 +149,10 @@ public class AddressBookTest {
         assertEquals(2, addressBook.addressEntryList.size());
 
     }
+
+    /**
+     * Tests adding a duplicate entry to the address book.
+     */
     @Test
     public void testAddDuplicate1() {
         AddressBook addressBook = new AddressBook();
@@ -139,6 +164,9 @@ public class AddressBookTest {
 
     }
 
+    /**
+     * Tests adding multiple entries with duplicates to the address book.
+     */
     @Test
     public void testAddDuplicate2() {
         AddressBook addressBook = new AddressBook();
@@ -152,9 +180,9 @@ public class AddressBookTest {
 
     }
 
-
-
-
+    /**
+     * Tests reading address entries from a file.
+     */
     @Test
     public void testReadFromFile() {
         // Arrange
@@ -197,6 +225,9 @@ public class AddressBookTest {
         assertEquals("319-293-3838", entry2.getPhone());
     }
 
+    /**
+     * Tests reading address entries from a file.
+     */
     @Test
     public void testReadFromFile1() {
         // Arrange
@@ -251,6 +282,11 @@ public class AddressBookTest {
         assertEquals("111-234-5678", entry3.getPhone());
     }
 
+
+    /**
+     * Creates a test file with sample address entries for testing purposes.
+     * @param filename The name of the file to be created.
+     */
     private void createTestFile(String filename) {
         try {
             File file = new File(filename);
@@ -275,6 +311,10 @@ public class AddressBookTest {
         }
     }
 
+    /**
+     * Creates a test file with additional sample address entries for testing purposes.
+     * @param filename The name of the file to be created.
+     */
     private void createTestFile1(String filename) {
         try {
             File file = new File(filename);
@@ -307,6 +347,9 @@ public class AddressBookTest {
         }
     }
 
+    /**
+     * Tests finding entries by last name.
+     */
     @Test
     public void testFind1() {
         // Arrange
@@ -348,6 +391,9 @@ public class AddressBookTest {
         assertLinesMatch(expectedOutput.lines(), outContent.toString().lines());
     }
 
+    /**
+     * Tests finding entries by last name.
+     */
     @Test
     public void testFind2() {
         // Arrange
