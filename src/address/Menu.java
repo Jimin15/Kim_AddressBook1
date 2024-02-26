@@ -1,8 +1,14 @@
 package address;
 import java.util.Scanner;
 
+/**
+ * The Menu class provides methods for displaying a menu and prompting the user for various information related to address entries.
+ */
 public class Menu {
 
+    /**
+     * Displays the menu options.
+     */
     public static void displayMenu() {
         System.out.println("*************************");
         System.out.println("Please enter your menu selection");
@@ -15,24 +21,40 @@ public class Menu {
         System.out.println("*************************");
     }
 
+    /**
+     * Prompts the user to enter a first name.
+     * @return The first name entered by the user.
+     */
     public static String prompt_FirstName(){
         Scanner scanner = new Scanner(System.in);
         System.out.print("First Name: ");
         return scanner.nextLine();
     }
 
+    /**
+     * Prompts the user to enter a last name.
+     * @return The last name entered by the user.
+     */
     public static String prompt_LastName(){
         Scanner scanner = new Scanner(System.in);
         System.out.print("Last Name: ");
         return scanner.nextLine();
     }
 
+    /**
+     * Prompts the user to enter a street address.
+     * @return The street address entered by the user.
+     */
     public static String prompt_Street(){
         Scanner scanner = new Scanner(System.in);
         System.out.print("Street: ");
         return scanner.nextLine();
     }
 
+    /**
+     * Prompts the user to enter a city.
+     * @return The city entered by the user.
+     */
     public static String prompt_City(){
         Scanner scanner = new Scanner(System.in);
         System.out.print("City: ");
@@ -40,12 +62,21 @@ public class Menu {
 
     }
 
+    /**
+     * Prompts the user to enter a state.
+     * @return The state entered by the user.
+     */
     public static String prompt_State(){
         Scanner scanner = new Scanner(System.in);
         System.out.print("State: ");
         return scanner.nextLine();
     }
 
+    /**
+     * Prompts the user to enter a zip code.
+     * This method continuously prompts the user until a valid zip code consisting of digits only is entered.
+     * @return The zip code entered by the user.
+     */
     public static int prompt_Zip() {
         Scanner scanner = new Scanner(System.in);
         int zipCode = 0;
@@ -66,12 +97,20 @@ public class Menu {
         return zipCode;
     }
 
+    /**
+     * Prompts the user to enter a phone number.
+     * @return The phone number entered by the user.
+     */
     public static String prompt_Phone() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Phone: ");
         return scanner.nextLine();
     }
 
+    /**
+     * Prompts the user to enter an email address.
+     * @return The email address entered by the user.
+     */
     public static String prompt_Email() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Email: ");
