@@ -26,26 +26,44 @@ public class Menu {
         System.out.print("Last Name: ");
         return scanner.nextLine();
     }
+
     public static String prompt_Street(){
         Scanner scanner = new Scanner(System.in);
         System.out.print("Street: ");
         return scanner.nextLine();
     }
+
     public static String prompt_City(){
         Scanner scanner = new Scanner(System.in);
         System.out.print("City: ");
         return scanner.nextLine();
 
     }
+
     public static String prompt_State(){
         Scanner scanner = new Scanner(System.in);
         System.out.print("State: ");
         return scanner.nextLine();
     }
+
     public static int prompt_Zip() {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Zip: ");
-        return Integer.parseInt(scanner.nextLine());
+        int zipCode = 0;
+        boolean isValid = false;
+
+        while (!isValid) {
+            System.out.print("Enter the zip code: ");
+            String input = scanner.nextLine();
+
+            // Check if the input consists of digits only
+            if (input.matches("\\d+")) {
+                zipCode = Integer.parseInt(input);
+                isValid = true;
+            } else {
+                System.out.println("Invalid input. Please enter digits only.");
+            }
+        }
+        return zipCode;
     }
 
     public static String prompt_Phone() {
@@ -53,6 +71,7 @@ public class Menu {
         System.out.print("Phone: ");
         return scanner.nextLine();
     }
+
     public static String prompt_Email() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Email: ");
