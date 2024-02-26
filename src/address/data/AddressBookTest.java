@@ -26,11 +26,6 @@ public class AddressBookTest {
 
     //test1
 
-    /**
-     * Tests the case when the address book is empty.
-     *  @author [Jimin Kim]
-     *  @since [2024-02-16]
-     */
     @Test
     public void testListNonEmptyAddressBook() {
         AddressBook addressBook = new AddressBook();
@@ -233,7 +228,7 @@ public class AddressBookTest {
     @Test
     public void testReadFromFile1() {
         // Arrange
-        String testFilename = "testFile1.txt";
+        String testFilename = "testFile2.txt";
         createTestFile1(testFilename);
         AddressBook addressBook = new AddressBook();
 
