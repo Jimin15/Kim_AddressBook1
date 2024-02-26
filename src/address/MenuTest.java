@@ -317,10 +317,10 @@ class MenuTest {
 
         String phone = Menu.prompt_Phone(); // Method call and storing the return value
         // Assert
-        assertEquals("3232345623", phone);
+        assertEquals("323-234-5623", phone);
 
         String input2 = "3232345623\n"; // Simulating user input
-        InputStream in2 = new ByteArrayInputStream(input.getBytes());
+        InputStream in2 = new ByteArrayInputStream(input2.getBytes());
         System.setIn(in2);
 
         String phone2 = Menu.prompt_Phone(); // Method call and storing the return value
